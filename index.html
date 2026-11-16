@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SODO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Songs: put song1.mp3 and song2.mp3 in the same folder as this file (or change the names here) -->
+  <audio id="song1" src="" preload="auto" loop></audio>
+  <audio id="song2" src="ssstik.io_1794859673287.mp3" preload="auto" loop></audio>
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+
+  <!-- Page 1: you draw the heart, then the name appears -->
+  <section class="scene active" id="scene1">
+    <svg class="guide" id="guide" viewBox="0 0 200 180" aria-hidden="true">
+      <path d="M100 165 C 40 120, 10 85, 10 55 C 10 28, 30 10, 55 10 C 75 10, 92 22, 100 40 C 108 22, 125 10, 145 10 C 170 10, 190 28, 190 55 C 190 85, 160 120, 100 165 Z"/>
+    </svg>
+
+    <canvas id="canvas" aria-label="Drawing area"></canvas>
+
+    <svg class="heart-svg" id="heartSvg" viewBox="0 0 200 180" role="img" aria-label="A heart with SODO written inside">
+      <defs>
+        <linearGradient id="strokeGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ff7a9a"/>
+          <stop offset="1" stop-color="#f6c89f"/>
+        </linearGradient>
+        <radialGradient id="fillGrad" cx="50%" cy="35%" r="70%">
+          <stop offset="0" stop-color="#d63f66"/>
+          <stop offset="1" stop-color="#7d1f3f"/>
+        </radialGradient>
+      </defs>
+      <path class="heart-fill"
+        d="M100 165 C 40 120, 10 85, 10 55 C 10 28, 30 10, 55 10 C 75 10, 92 22, 100 40 C 108 22, 125 10, 145 10 C 170 10, 190 28, 190 55 C 190 85, 160 120, 100 165 Z"/>
+      <path class="heart-line" pathLength="1"
+        d="M100 165 C 40 120, 10 85, 10 55 C 10 28, 30 10, 55 10 C 75 10, 92 22, 100 40 C 108 22, 125 10, 145 10 C 170 10, 190 28, 190 55 C 190 85, 160 120, 100 165 Z"/>
+      <text class="name" x="100" y="86" text-anchor="middle" dominant-baseline="middle">SODO</text>
+    </svg>
+
+    <p class="prompt" id="prompt">
+      <span class="script">Draw a heart</span>
+      <small id="promptSmall">Trace the dotted line with your finger</small>
+    </p>
+    <button class="reset" id="reset" type="button">Start over</button>
+  </section>
+
+  <!-- Page 2: the envelope -->
+  <section class="scene" id="scene2">
+    <div class="glow" id="glow" aria-hidden="true"></div>
+    <button class="envelope" id="envelope" type="button" aria-label="Open the letter">
+      <span class="env-back"></span>
+      <span class="env-letter" id="letter"><i></i><i></i><i></i><i class="short"></i></span>
+      <span class="env-front"></span>
+      <span class="env-flap"></span>
+      <span class="env-seal" id="seal">&#10084;</span>
+    </button>
+    <p class="hint" id="hint">Tap the envelope to open it</p>
+  </section>
+
+  <!-- Page 3: the letter -->
+  <section class="scene" id="scene3">
+    <article class="paper" id="paper">
+      <h1 class="to">To SODO</h1>
+
+      <div id="message">
+        <p>Thank you for always being there for me, for listening to me, and for just being yourself.</p>
+        <p>No matter what happens, I&rsquo;ve always got your back, and I appreciate you way more than you think. You really mean everything to me.</p>
+        <p>I really love everything about you&mdash;your vibe, the way you laugh, how kind and real you are, and just the way you get me like nobody else does. You&rsquo;re literally my favorite person to be around, and I feel super lucky to have you by my side.</p>
+      </div>
+
+      <p class="sign">With all my love &#10084;</p>
+      <button class="again" id="again" type="button">Read it again</button>
+    </article>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
